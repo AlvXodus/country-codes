@@ -1,0 +1,61 @@
+{
+  "name": "country-codes",
+  "version": "0.0.1",
+  "type": "module",
+  "homepage": "",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "typings": "./esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./esm/index.js",
+      "require": "./cjs/index.js",
+      "types": "./esm/index.d.ts"
+    },
+    "./codes": {
+      "import": "./esm/codes/index.js",
+      "require": "./cjs/codes/index.js",
+      "types": "./esm/codes/index.d.ts"
+    },
+    "./generators": {
+      "import": "./esm/generators/index.js",
+      "require": "./cjs/generators/index.js",
+      "types": "./esm/generators/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "npm run build:clean && npm run build:cjs && npm run build:esm && npm run build:types",
+    "build:clean": "rimraf build",
+    "build:esm": "tsc --project tsconfig.esm.json",
+    "build:cjs": "tsc --project tsconfig.cjs.json",
+    "build:types": "tsc --project tsconfig.types.json",
+    "copy-files": "cp package.json ./build/ && cp README.md ./build/",
+    "release": "npm run build && npm run copy-files && npm publish ./build"
+  },
+  "files": [
+    "cjs",
+    "ems",
+    "types",
+    "README.md"
+  ],
+  "keywords": [
+    "codes",
+    "phone-codes",
+    "currency",
+    "currency-symbols",
+    "iso code",
+    "iso",
+    "iso2",
+    "iso3"
+  ],
+  "author": "AlvXodus",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/AlvXodus/country-codes"
+  },
+  "description": "simple package to retrieve country calling codes, iso codes and currency symbols",
+  "devDependencies": {
+    "@types/node": "^22.13.14",
+    "rimraf": "^6.0.1"
+  }
+}
