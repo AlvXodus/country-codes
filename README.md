@@ -17,7 +17,7 @@ A utility library for working with country codes, phone codes, and currency symb
 ## Installation
 
 ```bash
-npm install country-codes
+npm install country-codes-kit
 ```
 
 ## Functions
