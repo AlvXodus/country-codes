@@ -30,7 +30,7 @@ interface ICountryDetails {
  * getPhoneCodes("NG") // ["234"]
  */
 
-export function getPhoneCodes(country_code: ISO2_CODE): string[] {
+export function getPhoneCode(country_code: ISO2_CODE): string[] {
   if (ISO2_PHONE_CODE[country_code]) {
     return ISO2_PHONE_CODE[country_code];
   }
@@ -47,10 +47,10 @@ export function getPhoneCodes(country_code: ISO2_CODE): string[] {
  * getPhoneCodesByCountryName("United States") // ["1"]
  * getPhoneCodesByCountryName("Nigeria") // ["234"]
  */
-export function getPhoneCodesByCountryName(country: string): string[] {
+export function getPhoneCodeByCountryName(country: string): string[] {
   if (COUNTRY_ISO_CODE_2[country]) {
     const countryCode = COUNTRY_ISO_CODE_2[country];
-    return getPhoneCodes(countryCode as ISO2_CODE);
+    return getPhoneCode(countryCode as ISO2_CODE);
   }
   return [];
 }
@@ -84,7 +84,7 @@ export function getCurrency(country_code: ISO2_CODE) {
  * "iso_3" set to true
  * @returns {string} - The ISO2 or ISO3 code associated with the given country
  */
-export function getCountryCodes(
+export function getCountryISOCode(
   country: string,
   options?: Options
 ): string | undefined {
@@ -124,7 +124,7 @@ export function getCountryDetails(
   if (COUNTRY_ISO_CODE_2[country]) {
     return {
       country,
-      phone_codes: getPhoneCodesByCountryName(country),
+      phone_codes: getPhoneCodeByCountryName(country),
       isoCode2: COUNTRY_ISO_CODE_2[country],
       isoCode3: COUNTRY_ISO_CODE_3[country],
       currency: getCurrency(COUNTRY_ISO_CODE_2[country] as ISO2_CODE),

@@ -1,9 +1,9 @@
 import {
-  getCountryCodes,
+  getCountryISOCode,
   getCountryDetails,
   getCurrency,
-  getPhoneCodes,
-  getPhoneCodesByCountryName,
+  getPhoneCode,
+  getPhoneCodeByCountryName,
 } from "./generators/index.js";
 
 import {
@@ -16,11 +16,11 @@ import {
 import { get } from "http";
 
 export {
-  getCountryCodes,
+  getCountryISOCode,
   getCountryDetails,
   getCurrency,
-  getPhoneCodes,
-  getPhoneCodesByCountryName,
+  getPhoneCode,
+  getPhoneCodeByCountryName,
 };
 
 export {
@@ -30,5 +30,3 @@ export {
   ISO2_PHONE_CODE,
   ISO2_CODE,
 };
-
-console.log(getCountryCodes("United States"));

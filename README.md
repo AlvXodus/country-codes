@@ -6,10 +6,10 @@ A utility library for working with country codes, phone codes, and currency symb
 
 - [Installation](#installation)
 - [Functions](#functions)
-  - [getPhoneCodes](#getphonecodes)
-  - [getPhoneCodesByCountryName](#getphonecodessbycountryname)
+  - [getPhoneCode](#getphonecode)
+  - [getPhoneCodeByCountryName](#getphonecodebycountryname)
   - [getCurrency](#getcurrency)
-  - [getCountryCodes](#getcountrycodes)
+  - [getCountryISOCode](#getcountryisocode)
   - [getCountryDetails](#getcountrydetails)
 - [Types](#types)
 - [Examples](#examples)
@@ -22,14 +22,14 @@ npm install country-codes-kit
 
 ## Functions
 
-### getPhoneCodes
+### getPhoneCode
 
 Returns an array of phone codes associated with a given ISO2 country code.
 
 #### Signature
 
 ```typescript
-function getPhoneCodes(country_code: ISO2_CODE): string[];
+function getPhoneCode(country_code: ISO2_CODE): string[];
 ```
 
 #### Parameters
@@ -43,29 +43,29 @@ function getPhoneCodes(country_code: ISO2_CODE): string[];
 #### Example
 
 ```typescript
-import { getPhoneCodes } from "country-codes-library";
+import { getPhoneCode } from "country-codes-kit";
 
 // Get phone codes for the United States
-const usCodes = getPhoneCodes("US");
+const usCode = getPhoneCode("US");
 console.log(usCodes); // Output: ["1"]
 
 // Get phone codes for the United Kingdom
-const ukCodes = getPhoneCodes("GB");
+const ukCode = getPhoneCode("GB");
 console.log(ukCodes); // Output: ["44"]
 
 // Get phone codes for a non-existent country code
-const nonExistent = getPhoneCodes("XX");
+const nonExistent = getPhoneCode("XX");
 console.log(nonExistent); // Output: []
 ```
 
-### getPhoneCodesByCountryName
+### getPhoneCodeByCountryName
 
 Returns an array of phone codes associated with a given country name.
 
 #### Signature
 
 ```typescript
-function getPhoneCodesByCountryName(country: string): string[];
+function getPhoneCodeByCountryName(country: string): string[];
 ```
 
 #### Parameters
@@ -79,18 +79,18 @@ function getPhoneCodesByCountryName(country: string): string[];
 #### Example
 
 ```typescript
-import { getPhoneCodesByCountryName } from "country-codes-library";
+import { getPhoneCodeByCountryName } from "country-codes-kit";
 
 // Get phone codes for the United States
-const usCodes = getPhoneCodesByCountryName("United States");
+const usCodes = getPhoneCodeByCountryName("United States");
 console.log(usCodes); // Output: ["1"]
 
 // Get phone codes for Nigeria
-const nigeriaCodes = getPhoneCodesByCountryName("Nigeria");
+const nigeriaCodes = getPhoneCodeByCountryName("Nigeria");
 console.log(nigeriaCodes); // Output: ["234"]
 
 // Get phone codes for a non-existent country
-const nonExistent = getPhoneCodesByCountryName("Nonexistia");
+const nonExistent = getPhoneCodeByCountryName("Nonexistia");
 console.log(nonExistent); // Output: []
 ```
 
@@ -115,7 +115,7 @@ function getCurrency(country_code: ISO2_CODE): string;
 #### Example
 
 ```typescript
-import { getCurrency } from "country-codes-library";
+import { getCurrency } from "country-codes-kit";
 
 // Get currency for the United States
 const usCurrency = getCurrency("US");
@@ -130,14 +130,14 @@ const nonExistent = getCurrency("XX");
 console.log(nonExistent); // Output: "#"
 ```
 
-### getCountryCodes
+### getCountryISOCode
 
 Returns the ISO2 or ISO3 code associated with a given country name.
 
 #### Signature
 
 ```typescript
-function getCountryCodes(
+function getCountryISOCode(
   country: string,
   options?: Options
 ): string | undefined;
@@ -157,22 +157,22 @@ function getCountryCodes(
 #### Example
 
 ```typescript
-import { getCountryCodes } from "country-codes-library";
+import { getCountryISOCode } from "country-codes-kit";
 
 // Get default ISO2 code for the United States
-const usCode = getCountryCodes("United States");
+const usCode = getCountryISOCode("United States");
 console.log(usCode); // Output: "US"
 
 // Get ISO2 code explicitly
-const usIso2 = getCountryCodes("United States", { iso_2: true });
+const usIso2 = getCountryISOCode("United States", { iso_2: true });
 console.log(usIso2); // Output: "US"
 
 // Get ISO3 code
-const usIso3 = getCountryCodes("United States", { iso_3: true });
+const usIso3 = getCountryISOCode("United States", { iso_3: true });
 console.log(usIso3); // Output: "USA"
 
 // Get code for a country with mixed case
-const mixedCase = getCountryCodes("uniTed kiNGdom");
+const mixedCase = getCountryISOCode("uniTed kiNGdom");
 console.log(mixedCase); // Output: "GB"
 ```
 
@@ -202,7 +202,7 @@ function getCountryDetails(country: string): ICountryDetails | undefined;
 #### Example
 
 ```typescript
-import { getCountryDetails } from "country-codes-library";
+import { getCountryDetails } from "country-codes-kit";
 
 // Get details for the United States
 const usDetails = getCountryDetails("United States");
@@ -251,12 +251,12 @@ interface Options {
 
 ```typescript
 import {
-  getPhoneCodes,
-  getPhoneCodesByCountryName,
+  getPhoneCode,
+  getPhoneCodeByCountryName,
   getCurrency,
-  getCountryCodes,
+  getCountryISOCode,
   getCountryDetails,
-} from "country-codes-library";
+} from "country-codes-kit";
 
 // Find details for a country
 const canadaDetails = getCountryDetails("Canada");
@@ -277,12 +277,12 @@ console.log(`Currency symbol for Canada: ${currencySymbol}`);
 // Output: Currency symbol for Canada: $
 
 // Get phone codes for a country name
-const phoneCodes = getPhoneCodesByCountryName("France");
+const phoneCodes = getPhoneCodeByCountryName("France");
 console.log(`Phone codes for France: ${phoneCodes.join(", ")}`);
 // Output: Phone codes for France: 33
 
 // Get country codes
-const franceIso3 = getCountryCodes("France", { iso_3: true });
+const franceIso3 = getCountryISOCode("France", { iso_3: true });
 console.log(`ISO3 code for France: ${franceIso3}`);
 // Output: ISO3 code for France: FRA
 ```
