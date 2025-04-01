@@ -5,22 +5,22 @@
   "homepage": "",
   "main": "./cjs/index.js",
   "module": "./esm/index.js",
-  "typings": "./esm/index.d.ts",
+  "typings": "./types/index.d.ts",
   "exports": {
     ".": {
       "import": "./esm/index.js",
       "require": "./cjs/index.js",
-      "types": "./esm/index.d.ts"
+      "types": "./types/index.d.ts"
     },
     "./codes": {
       "import": "./esm/codes/index.js",
       "require": "./cjs/codes/index.js",
-      "types": "./esm/codes/index.d.ts"
+      "types": "./types/codes/index.d.ts"
     },
     "./generators": {
       "import": "./esm/generators/index.js",
       "require": "./cjs/generators/index.js",
-      "types": "./esm/generators/index.d.ts"
+      "types": "./types/generators/index.d.ts"
     }
   },
   "scripts": {
