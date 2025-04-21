@@ -1,30 +1,30 @@
 {
   "name": "country-codes-kit",
-  "version": "0.0.3",
-  "type": "module",
+  "version": "0.0.4",
+  "type": "commonjs",
   "homepage": "",
   "main": "./cjs/index.js",
-  "module": "./esm/index.js",
+  "module": "./esm/index.mjs",
   "typings": "./types/index.d.ts",
   "exports": {
     ".": {
-      "import": "./esm/index.js",
+      "import": "./esm/index.mjs",
       "require": "./cjs/index.js",
       "types": "./types/index.d.ts"
     },
     "./codes": {
-      "import": "./esm/codes/index.js",
+      "import": "./esm/codes/index.mjs",
       "require": "./cjs/codes/index.js",
       "types": "./types/codes/index.d.ts"
     },
     "./generators": {
-      "import": "./esm/generators/index.js",
+      "import": "./esm/generators/index.mjs",
       "require": "./cjs/generators/index.js",
       "types": "./types/generators/index.d.ts"
     }
   },
   "scripts": {
-    "build": "npm run build:clean && npm run build:cjs && npm run build:esm && npm run build:types",
+    "build": "npm run build:clean && npm run build:cjs && npm run build:esm && node rename-esm.js && npm run build:types",
     "build:clean": "rimraf build",
     "build:esm": "tsc --project tsconfig.esm.json",
     "build:cjs": "tsc --project tsconfig.cjs.json",
